@@ -25,33 +25,33 @@ struct vector{
     }
 };
 
-float distancia(float, float, float, float);
+float distancia(float, float, float, float);   // distancia 2D
 
-float distancia(float, float, float, float, float, float);
+float distancia(float, float, float, float, float, float);   // distancia 3D
 
-Dot suma(float, float, float, float);
+Dot suma(float, float, float, float);  // suma 2D
 
-Dot suma(float, float, float, float, float, float);
+Dot suma(float, float, float, float, float, float); // suma 3D
 
-Dot resultanteArreglo(Dot[], int, bool); // bool = true -> 3D
+Dot resultanteArreglo(Dot[], int, bool); // bool = true -> 3D  , otherwise false
 
-float productPunto(float,float,float,float);
+float productPunto(float,float,float,float);   //producto punto 2D
 
-float productPunto(float,float,float,float,float,float);
+float productPunto(float,float,float,float,float,float);   //producto punto 3D
 
-Dot productCruz(float,float,float,float);
+Dot productCruz(float,float,float,float); //producto cruz 2D
 
-Dot productCruz(float,float,float,float,float,float);
+Dot productCruz(float,float,float,float,float,float);  // prodcuto cruz 3D
 
-void vectorPlano(float, float, float);
+void vectorPlano(float, float, float);  
 
-vector forceSystem(Dot[], int);
+vector forceSystem(Dot[], int);   // devuelve par (magnitud, distancia)
 
 int main(){
     std::cout<<"Test funcion distancia"<<endl;
     std::cout<<"Puntos (1,2) y (4,5): "<<distancia(1,2,4,5)<<endl;
     std::cout<<"Puntos (1,7,5) y (4,8,7): "<<distancia(1,7,5,4,8,7)<<endl;
-   std:: cout<<endl;
+    std::cout<<endl;
 
     std::cout<<"Test funcion suma"<<endl;
     std::cout<<"Puntos (1,5) y (8.7,6.7): "<<'('<<suma(1,5,8.7,6.7).x<<','<<suma(1,5,8.7,6.7).y<<')'<<endl;
@@ -91,28 +91,28 @@ int main(){
     std::cout<<"Para los vectores {{2,-6,7},{-1,0,4},{5,3,2},{1,3,4},{-6,4,3},{1,1,1},{-10,4,6}} el vector resultante es: ("<<forceSystem(lista, 7).magnitude<<','<<forceSystem(lista, 7).angle<<')'<<endl;
 }
 
-float distancia(float x1, float y1, float x2, float y2){
+float distancia(float x1, float y1, float x2, float y2){   // distancia 2D
     float d;
     d=sqrt(pow(x2-x1, 2)+pow(y2-y1,2));
     return d;
 }
 
-float distancia(float x1, float y1, float z1, float x2, float y2, float z2){
+float distancia(float x1, float y1, float z1, float x2, float y2, float z2){   // distancia 3D
     float d;
     d=sqrt(pow(x2-x1, 2)+pow(y2-y1,2)+pow(z2-z1, 2));
     return d;
 }
 
-Dot suma(float x1, float y1, float x2, float y2){
+Dot suma(float x1, float y1, float x2, float y2){  // suma 2D
     Dot v3= {x1+x2, y1+y2, 0};
     return v3;
 }
-Dot suma(float x1, float y1, float z1, float x2, float y2, float z2){
+Dot suma(float x1, float y1, float z1, float x2, float y2, float z2){  // suma 3D
     Dot v3= {x1+x2, y1+y2, z1+z2};
     return v3;
 }
 
-Dot resultanteArreglo(Dot lista[], int a, bool b){
+Dot resultanteArreglo(Dot lista[], int a, bool b){   // lista de vectores, longitud de arreglo, bool(true para 3D, false para otro) 
     Dot r={0,0,0};
     if(b){
     for (int i=0; i<a; i++){
@@ -129,25 +129,25 @@ Dot resultanteArreglo(Dot lista[], int a, bool b){
     return r;
 }
 
-float productPunto(float x1, float y1, float x2 ,float y2){
+float productPunto(float x1, float y1, float x2 ,float y2){  //producto punto 2D
     float p;
     p=x1*x2+y1*y2;
     return p;
 }
 
-float productPunto(float x1, float y1, float z1, float x2 ,float y2, float z2){
+float productPunto(float x1, float y1, float z1, float x2 ,float y2, float z2){    //producto punto 3D
     float p;
     p=x1*x2+y1*y2+z1*z2;
     return p;
 
 }
 
-Dot productCruz(float x1, float y1, float x2 ,float y2){
+Dot productCruz(float x1, float y1, float x2 ,float y2){   //producto cruz 2D
     Dot r={0, 0, x1*y2-x2*y1};
     return r;
 }
 
-Dot productCruz(float x1, float y1, float z1, float x2 ,float y2, float z2){
+Dot productCruz(float x1, float y1, float z1, float x2 ,float y2, float z2){   //producto cruz 3D
     Dot r={(y1*z2-z1*y2), -(x1*z2-z1*x2), (x1*y2-y1*x2)};
     return r;
 }
