@@ -15,12 +15,13 @@ struct Dot{
     }
 };
 
-struct Dot2{
-    float x;
-    float y;
-    Dot2(float x, float y){
-        this->x=x;
-        this->y=y;
+struct vector{
+    float angle;
+    float magnitude;
+
+    vector(float angle, float magnitude){
+        this->angle=angle;
+        this->magnitude=magnitude;
     }
 };
 
@@ -44,43 +45,50 @@ Dot productCruz(float,float,float,float,float,float);
 
 void vectorPlano(float, float, float);
 
-int main(){
-    cout<<"Test funcion distancia"<<endl;
-    cout<<"Puntos (1,2) y (4,5): "<<distancia(1,2,4,5)<<endl;
-    cout<<"Puntos (1,7,5) y (4,8,7): "<<distancia(1,7,5,4,8,7)<<endl;
-    cout<<endl;
+vector forceSystem(Dot[], int);
 
-    cout<<"Test funcion suma"<<endl;
-    cout<<"Puntos (1,5) y (8.7,6.7): "<<'('<<suma(1,5,8.7,6.7).x<<','<<suma(1,5,8.7,6.7).y<<')'<<endl;
-    cout<<"Puntos (2.3,5,9) y (8.7,4.7,0): "<<'('<<suma(2.3,5,9,8.7,4.7,0).x<<','<<suma(2.3,5,9,8.7,4.7,0).y<<','<<suma(2.3,5,9,8.7,4.7,0).z<<')'<<endl;
-    cout<<endl;
+int main(){
+    std::cout<<"Test funcion distancia"<<endl;
+    std::cout<<"Puntos (1,2) y (4,5): "<<distancia(1,2,4,5)<<endl;
+    std::cout<<"Puntos (1,7,5) y (4,8,7): "<<distancia(1,7,5,4,8,7)<<endl;
+   std:: cout<<endl;
+
+    std::cout<<"Test funcion suma"<<endl;
+    std::cout<<"Puntos (1,5) y (8.7,6.7): "<<'('<<suma(1,5,8.7,6.7).x<<','<<suma(1,5,8.7,6.7).y<<')'<<endl;
+    std::cout<<"Puntos (2.3,5,9) y (8.7,4.7,0): "<<'('<<suma(2.3,5,9,8.7,4.7,0).x<<','<<suma(2.3,5,9,8.7,4.7,0).y<<','<<suma(2.3,5,9,8.7,4.7,0).z<<')'<<endl;
+    std::cout<<endl;
 
     Dot trialList[]={{1,8,7},{7,8,4},{0,0,2},{7,4,6},{5,5,1},{8,4,2}};
-    cout<<"Test resultante Arreglo"<<endl;
-    cout<<"Arreglo: {{1,8,7},{7,8,4},{0,0,2},{7,4,6},{5,5,1},{8,4,2}}"<<endl;
-    cout<<"2D: "<<'('<<resultanteArreglo(trialList, 6, false).x<<','<<resultanteArreglo(trialList, 6, false).y<<','<<resultanteArreglo(trialList, 6, false).z<<')'<<endl;
-    cout<<"3D: "<<'('<<resultanteArreglo(trialList, 6, true).x<<','<<resultanteArreglo(trialList, 6, true).y<<','<<resultanteArreglo(trialList, 6, true).z<<')'<<endl;
-    cout<<endl;
+    std::cout<<"Test resultante Arreglo"<<endl;
+    std::cout<<"Arreglo: {{1,8,7},{7,8,4},{0,0,2},{7,4,6},{5,5,1},{8,4,2}}"<<endl;
+    std::cout<<"2D: "<<'('<<resultanteArreglo(trialList, 6, false).x<<','<<resultanteArreglo(trialList, 6, false).y<<','<<resultanteArreglo(trialList, 6, false).z<<')'<<endl;
+    std::cout<<"3D: "<<'('<<resultanteArreglo(trialList, 6, true).x<<','<<resultanteArreglo(trialList, 6, true).y<<','<<resultanteArreglo(trialList, 6, true).z<<')'<<endl;
+    std::cout<<endl;
 
-    cout<<"Test producto punto"<<endl;
-    cout<<"Puntos (1,2) y (5,6): "<<productPunto(1,2,5,6)<<endl;
-    cout<<"Puntos (2,5,8) y (4,7,10): "<<productPunto(2,5,8,4,7,10)<<endl;
-    cout<<endl;
+    std::cout<<"Test producto punto"<<endl;
+    std::cout<<"Puntos (1,2) y (5,6): "<<productPunto(1,2,5,6)<<endl;
+    std::cout<<"Puntos (2,5,8) y (4,7,10): "<<productPunto(2,5,8,4,7,10)<<endl;
+    std::cout<<endl;
 
-    cout<<"Test producto cruz"<<endl;
-    cout<<"Puntos (9, 8) y (10,11): "<<productCruz(9,8,10,11).z<<'k'<<endl;
-    cout<<"Puntos (1,4,6) y (5,8,9): "<<'('<<productCruz(1,4,6,5,8,9).x<<','<<productCruz(1,4,6,5,8,9).y<<','<<productCruz(1,4,6,5,8,9).z<<')'<<endl;
-    cout<<endl;
+    std::cout<<"Test producto cruz"<<endl;
+    std::cout<<"Puntos (9, 8) y (10,11): "<<productCruz(9,8,10,11).z<<'k'<<endl;
+    std::cout<<"Puntos (1,4,6) y (5,8,9): "<<'('<<productCruz(1,4,6,5,8,9).x<<','<<productCruz(1,4,6,5,8,9).y<<','<<productCruz(1,4,6,5,8,9).z<<')'<<endl;
+    std::cout<<endl;
 
-    cout<<"Test funcion vectorPlano"<<endl;
-    cout<<"(0, 8, 7): ";
+    std::cout<<"Test funcion vectorPlano"<<endl;
+    std::cout<<"(0, 8, 7): ";
     vectorPlano(0,8,7);
-    cout<<"(9, -8, 7): ";
+    std::cout<<"(9, -8, 7): ";
     vectorPlano(9,-8,7);
-    cout<<"(-3, 8, -7): ";
+    std::cout<<"(-3, 8, -7): ";
     vectorPlano(-3,8,-7);
-    cout<<"(2, 8, 7): ";
+    std::cout<<"(2, 8, 7): ";
     vectorPlano(2,8,7);
+    std::cout<<endl;
+
+    std::cout<<"Test sistema de fuerzas"<<endl;
+    Dot lista[]={{2,-6,7},{-1,0,4},{5,3,2},{1,3,4},{-6,4,3},{1,1,1},{-10,4,6}};
+    std::cout<<"Para los vectores {{2,-6,7},{-1,0,4},{5,3,2},{1,3,4},{-6,4,3},{1,1,1},{-10,4,6}} el vector resultante es: ("<<forceSystem(lista, 7).magnitude<<','<<forceSystem(lista, 7).angle<<')'<<endl;
 }
 
 float distancia(float x1, float y1, float x2, float y2){
@@ -145,38 +153,47 @@ Dot productCruz(float x1, float y1, float z1, float x2 ,float y2, float z2){
 }
 
 void vectorPlano(float x, float y, float z){
-    cout<<x<<"i+"<<y<<"j+"<<z<<'k'<<endl;
+    std::cout<<x<<"i+"<<y<<"j+"<<z<<'k'<<endl;
 
     if( x==0 && y==0 && z==0){
-        cout<<"El vector es el origen"<<endl;
+        std::cout<<"El vector es el origen"<<endl;
     }else if( y==0 && z==0){
-        cout<<"El vector esta en el eje X"<<endl;
+        std::cout<<"El vector esta en el eje X"<<endl;
     }else if(x==0 && z==0){
-        cout<<"El vector esta en el eje Y"<<endl;
+        std::cout<<"El vector esta en el eje Y"<<endl;
     }else if(x==0 && y==0){
-        cout<<"El vector esta en el eje Z"<<endl;
+        std::cout<<"El vector esta en el eje Z"<<endl;
     }else if(x==0){
-        cout<<"El vector esta en el plano YZ"<<endl;
+        std::cout<<"El vector esta en el plano YZ"<<endl;
     }else if(y==0){
-        cout<<"El vector esta en el plano XZ"<<endl;
+        std::cout<<"El vector esta en el plano XZ"<<endl;
     }else if(z==0){
-        cout<<"El vector esta en el plano XY"<<endl;
+        std::cout<<"El vector esta en el plano XY"<<endl;
     }else if(x>0 && y>0 && z>0){
-        cout<<"El vector esta en el octante I"<<endl;
+        std::cout<<"El vector esta en el octante I"<<endl;
     }else if(x<0 && y>0 && z>0){
-        cout<<"El vector esta en el octante II"<<endl;
+        std::cout<<"El vector esta en el octante II"<<endl;
     }else if(x<0 && y<0 && z>0){
-        cout<<"El vector esta en el octante III"<<endl;
+        std::cout<<"El vector esta en el octante III"<<endl;
     }else if(x>0 && y<0 && z>0){
-        cout<<"El vector esta en el octante IV"<<endl;    
+        std::cout<<"El vector esta en el octante IV"<<endl;    
     }else if(x>0 && y>0 && z<0){
-        cout<<"El vector esta en el octante V"<<endl;
+        std::cout<<"El vector esta en el octante V"<<endl;
     }else if(x<0 && y>0 && z<0){
-        cout<<"El vector esta en el octante VI"<<endl;
+        std::cout<<"El vector esta en el octante VI"<<endl;
     }else if(x<0 && y<0 && z<0){
-        cout<<"El vector esta en el octante VII"<<endl;
+        std::cout<<"El vector esta en el octante VII"<<endl;
     }else{
-        cout<<"El vector esta en el octante VIII"<<endl;
+        std::cout<<"El vector esta en el octante VIII"<<endl;
     }
+}
 
+vector forceSystem(Dot lista[], int a){
+    Dot r= resultanteArreglo(lista, a, true);
+
+    float magnitude= distancia(r.x,r.y,r.z,0,0,0);
+    float angle= tanh((r.y*1.0)/(r.x*1.0));
+    vector vec={angle, magnitude};
+
+    return vec;
 }
